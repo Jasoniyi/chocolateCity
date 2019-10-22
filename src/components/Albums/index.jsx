@@ -8,8 +8,13 @@ import {
   MDBCollapse,
   MDBRow,
   MDBCol,
-  MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText
- 
+  MDBBtn,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBCardTitle,
+  MDBCardText,
+  MDBContainer
 } from "mdbreact";
 
 import { Link } from "react-router-dom";
@@ -40,14 +45,18 @@ class index extends Component {
       );
   }
 
-  getalbums = () => 
-  this.state.getalbums.map(album => (
-      
-  ))
-  
-    
-      
-  
+  getalbums = () =>
+    this.state.activeAlbums.map(album => (
+      <MDBCol>
+        <MDBCard style={{ width: "22rem", marginTop: "2em" }}>
+          <MDBCardBody>
+            <MDBCardTitle>{album.id}</MDBCardTitle>
+            <MDBCardText>{album.title}</MDBCardText>
+            <MDBBtn href="#">MDBBtn</MDBBtn>
+          </MDBCardBody>
+        </MDBCard>
+      </MDBCol>
+    ));
 
   render() {
     return (
@@ -78,14 +87,16 @@ class index extends Component {
           </MDBCollapse>
         </MDBNavbar>
 
+        <h1 className="text-center p-2">Our Albums</h1>
+
         <div>
-          {!this.state.isLoading ? (
-            <MDBRow>
-                {this.getalbums()}
-            </MDBRow>
-          ) : (
-            <h1> loading</h1>
-          )}
+          <MDBContainer>
+            {!this.state.isLoading ? (
+              <MDBRow>{this.getalbums()}</MDBRow>
+            ) : (
+              <h1> loading</h1>
+            )}
+          </MDBContainer>
         </div>
         {/* <Footer /> */}
       </>
