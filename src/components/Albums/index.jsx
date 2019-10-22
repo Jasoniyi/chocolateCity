@@ -4,27 +4,51 @@ import {
   MDBNavbarBrand,
   MDBNavbarNav,
   MDBNavItem,
-  MDBNavLink,
   MDBNavbarToggler,
   MDBCollapse,
-  MDBFormInline,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem
+  MDBRow,
+  MDBCol,
+  MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText
+ 
 } from "mdbreact";
+
 import { Link } from "react-router-dom";
-import Carousel from "./Carousel";
-import Footer from "./Footer";
+
+// import Footer from "./Footer";
 
 class index extends Component {
   state = {
-    isOpen: false
+    isOpen: false,
+    isLoading: true,
+    activeAlbums: []
   };
 
   toggleCollapse = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
+
+  componentDidMount() {
+    const url = "https://jsonplaceholder.typicode.com/albums";
+
+    fetch(url)
+      .then(responce => responce.json())
+      .then(data =>
+        this.setState({
+          isLoading: false,
+          activeAlbums: data
+        })
+      );
+  }
+
+  getalbums = () => 
+  this.state.getalbums.map(album => (
+      
+  ))
+  
+    
+      
+  
+
   render() {
     return (
       <>
@@ -46,7 +70,7 @@ class index extends Component {
                 </Link>
               </MDBNavItem>
               <MDBNavItem>
-                <Link to="/albums" className="nav-link">
+                <Link to="#" className="nav-link">
                   Albums
                 </Link>
               </MDBNavItem>
@@ -55,9 +79,15 @@ class index extends Component {
         </MDBNavbar>
 
         <div>
-          <Carousel />
+          {!this.state.isLoading ? (
+            <MDBRow>
+                {this.getalbums()}
+            </MDBRow>
+          ) : (
+            <h1> loading</h1>
+          )}
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </>
     );
   }

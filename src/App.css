@@ -24,3 +24,36 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.recipes__box {
+  background: #f4f4f4;
+  padding-bottom: 2rem;
+  border-radius: 5px;
+  box-shadow: -1px 2px 34px -13px rgba(0, 0, 0, 0.75);
+  text-align: left;
+  overflow: hidden;
+  margin-bottom: 2em;
+}
+
+.recipes__text {
+  margin-left: 15px;
+}
+
+.recipes__label {
+  color: #f83600;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  padding: 1.8rem 0 0.2rem 0;
+}
+
+.jumbo {
+  display: flex;
+  flex-direction: row;
+}
+
+.album {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: aquamarine;
+}
